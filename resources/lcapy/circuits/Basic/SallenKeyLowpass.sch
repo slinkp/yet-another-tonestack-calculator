@@ -11,4 +11,5 @@ R2 N OUT 10e3; right
 C1 N 0 20e-9; down
 C2 OUT 0 10e-9; down
 RL OUT 0 100e3; down
-E1 OUT 0 opamp N OUT 1e6; right, mirror, scale=0.75, size=0.75
+W OUT FB; right=0.5
+E1 OUT 0 opamp N FB 1e6; right, scale=0.75, size=0.75
