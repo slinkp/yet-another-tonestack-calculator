@@ -1,6 +1,6 @@
 ---
 id: skl0
-name: Sallen-Key Lowpass (Butterworth, unity)
+name: Sallen-Key Lowpass (Butterworth, unity, blah)
 controls: {}
 ---
 # Unity-gain Sallen–Key low-pass filter
