@@ -1,24 +1,16 @@
 ---
 id: skl0
-name: Sallen-Key Lowpass (Butterworth, unity, blah)
+name: Sallen–Key Low-pass (Butterworth, unity)
 controls: {}
 ---
-# Unity-gain Sallen–Key low-pass filter
-# Butterworth response with R1 = R2 and C1 = 2 * C2
-# Use common E12 values; exact cutoff is not prioritized.
-
-P 1 0; down, v_=v_{in}(t)
-R1 1 2; right
-R2 2 3; right
-C1 2 4; up
-C2 3 9; down
-W 4 5; right
-W 5 6; right
-W 6 7; down=0
-W 7 8; right=0.5
-E 7 0 opamp 3 11 A; right, mirror, scale=0.75, size=0.75
-W 5 11; down=0.5
-P 8 10; down, v^=v_{out}(t)
-W 0 9; right
-W 9 10; right
-;draw_nodes=connections, label_nodes=False, help_lines=1
+RIN IN N 10000; right
+R2 N OUT 10000; right
+C1 N 0 20e-9; down
+C2 OUT 0 10e-9; down
+RL OUT 0 100e3; down
+W N OA1P; right
+E1 OA1O 0 opamp OA1P OA1N; right=0.6, scale=0.6, l=OA1
+W OA1O OUT; right=0.1
+W OA1O OA1O_; down=0.4
+W OA1O_ OA1N_; left
+W OA1N_ OA1N; up=0.4
