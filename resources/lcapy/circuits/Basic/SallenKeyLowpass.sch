@@ -9,5 +9,5 @@ C2 N2 0 10e-9; down
 W1 N1 N3; up
 C1 N3 N4 20e-9; right
 W4 N4 OUT; down
-W5 N2 OUT; right
+E1 OUT 0 opamp N2 N4; right, scale=0.7, l=OA1
 RL OUT 0 10e5; down
