@@ -12,10 +12,11 @@ C1 N3 N4 20e-9; right
 A4 N4; l_=N4, yoffset=0.5
 A5 N5; l_=N5, yoffset=0.5
 
-;; Repurposing the feedback loop to feed the opamp inverting input.
-;; We'll re-add a feedback loop later.
 W3 N4 N_OAINV; down, l_=W3
 W4 N5 OUT; down, l_=W4
 E OUT 0 opamp N2 N_OAINV; right, mirror, scale=0.5, l_=Opamp
+
+;; Feedback time
+W5 N4 N5; right, l_=W5
 
 RL OUT 0 10e5; down
