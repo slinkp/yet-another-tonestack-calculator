@@ -16,7 +16,7 @@ W3 N4 N_OAINV; down, l_=W3
 W4 N5 OUT; down, l_=W4
 E OUT 0 opamp N2 N_OAINV; right, mirror, scale=0.5, l_=Opamp
 
-;; Feedback time
-W5 N4 N5; right, l_=W5
+;; Feedback time. Does a resistor fix the math domain error? No it does not. Flailing here.
+RFEEDBACK N4 N5 1; right, l=feedback
 
 RL OUT 0 10e5; down
