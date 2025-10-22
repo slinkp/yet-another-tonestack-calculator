@@ -24,7 +24,9 @@ W4 N5 OUT; down, l_=W4
 ;; And, for reasons I do not understand, in this netlist (but apparently not others in YATS
 ;; that use op-amps), you cannot use the default output resistance Ro=0
 ;; nor common-mode gain Ac=0, so we set them very small.
-E OUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10; right, mirror, scale=0.5, l_=TL071
+;; Unclear what default Ad (differential or open-loop gain) is, but
+;; i'm using "typical" value from TL071 data sheet of 118dB = approx 630,957
+E OUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, mirror, scale=0.5, l_=TL071
 
 ;; Feedback time. Does a resistor fix the math domain error? No it does not. Flailing here.
 WFEEDBACK N4 N5 ; right, l=feedback

@@ -13,6 +13,7 @@ export class SallenKeyLowpass extends BaseTonestack {
         RL: 1e6,
         C1: 20e-9,
         C2: 10e-9,
+        E: 630.957e3,
         E_Ac: 100e-12,
         E_Ro: 100e-12,
       },
