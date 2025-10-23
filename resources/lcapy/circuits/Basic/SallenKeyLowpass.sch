@@ -2,26 +2,23 @@
 id: skl0
 name: Sallen–Key Low-pass (Butterworth, unity)
 controls:
-  RFREQ1: LogC
-  RFREQ2: LogC
+  R1A: LogC
+  R1B: LogC
 
-description: RFREQ1 and RFREQ2 are typically one dual-ganged pot. For butterworth response (12dB/octave and no resonant peak), set C1 to twice C2. For higher Q, increase that ratio.
+description: R1A and R1B are typically one dual-ganged pot. For butterworth response (12dB/octave and no resonant peak), set C1 to twice C2. For higher Q, increase that ratio. R2 and R3 are optional, and should have the same value, which sets an upper bound on the frequency control.
 
 ---
 
 ;; I would make a dual-ganged pot here if I knew how
-RFREQ1 IN N1 500e3; right, variable, *
-RFREQ2 N1 N_OANONINV 500e3; right, variable, *
-
-;; TODO add two fixed resistors here to set the max cutoff freq
-;; (one before RFREQ1, the other before RFREQ2).
-;; When the pots are 0 we get max and it's always uselessly flat to 100k.
-;; Decent starting points = 3k?
+R1A IN N99 1e6; right, variable, *
+R2 N99 N2 1e3; right
+R1B N2 N100  1e6; right, variable, *
+R3 N100 N_OANONINV 1e3; right
 
 ;; For butterworth set C1 = 2*C2
-C1 N3 N4 43e-10; right
-C2 N_OANONINV 0 22e-10; down
-W1 N1 N3; up
+C1 N3 N4 22e-10; right
+C2 N_OANONINV 0 11e-10; down
+W1 N2 N3; up
 
 ;; For debug only
 ;A4 N4; l_=N4, yoffset=0.5
