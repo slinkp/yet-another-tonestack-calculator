@@ -19,7 +19,7 @@ export class Canarat95 extends BaseTonestack {
       },
       controls: {
         RT: {
-          taper: Tapers.LogA,
+          taper: Tapers.Linear,
           role: PotRole.VR,
           reverse: true,
         },
