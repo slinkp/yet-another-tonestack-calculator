@@ -9,12 +9,12 @@ description: does this even work?
 
 ---
 
-RIN IN 2 10; right
+W IN 2; right
 R7 2b 2mid 10e3; right
-C8 2mid 0 3.3e-9; down, _
+C8 2mid 0 3.3e-9; down
 R13 2mid 3 10e3; right
 C14 2a 4 10e-9; right
-C9 3 OUTa 22e-9; right=0.525
+C9 3 OUTa 22e-9; right
 R_T 4 5 100e3; right, variable
 RL OUT 0 1e6; down
 W 2 2a; up=0.5

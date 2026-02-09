@@ -9,7 +9,6 @@ export class Canarat95 extends BaseTonestack {
       description: 'does this even work?',
       schematic: 'Canarat95',
       components: {
-        RIN: 10,
         R13: 10e3,
         R7: 10e3,
         RT: 100e3,
@@ -28,7 +27,7 @@ export class Canarat95 extends BaseTonestack {
   }
 
   calculateCoefficients(controlValues) {
-    const { RIN, R13, R7, RT, RL, C14, C8, C9 } = this.extractCoefficientVariables(controlValues);
+    const { R13, R7, RT, RL, C14, C8, C9 } = this.extractCoefficientVariables(controlValues);
 
     const b0 = 0;
     const b1 = C9*RL;
@@ -36,9 +35,9 @@ export class Canarat95 extends BaseTonestack {
     const b3 = C14*C8*C9*R13*R7*RL;
 
     const a0 = 1;
-    const a1 = C14*R13 + C14*R7 + C14*RT + C8*R7 + C8*RIN + C9*R13 + C9*R7 + C9*RIN + C9*RL;
-    const a2 = C14*C8*R13*R7 + C14*C8*R13*RIN + C14*C8*R7*RIN + C14*C8*R7*RT + C14*C8*RIN*RT + C14*C9*R13*RIN + C14*C9*R13*RL + C14*C9*R13*RT + C14*C9*R7*RIN + C14*C9*R7*RL + C14*C9*R7*RT + C14*C9*RIN*RT + C14*C9*RL*RT + C8*C9*R13*R7 + C8*C9*R13*RIN + C8*C9*R7*RL + C8*C9*RIN*RL;
-    const a3 = C14*C8*C9*R13*R7*RIN + C14*C8*C9*R13*R7*RL + C14*C8*C9*R13*R7*RT + C14*C8*C9*R13*RIN*RL + C14*C8*C9*R13*RIN*RT + C14*C8*C9*R7*RIN*RL + C14*C8*C9*R7*RL*RT + C14*C8*C9*RIN*RL*RT;
+    const a1 = C14*R13 + C14*R7 + C14*RT + C8*R7 + C9*R13 + C9*R7 + C9*RL;
+    const a2 = C14*C8*R13*R7 + C14*C8*R7*RT + C14*C9*R13*RL + C14*C9*R13*RT + C14*C9*R7*RL + C14*C9*R7*RT + C14*C9*RL*RT + C8*C9*R13*R7 + C8*C9*R7*RL;
+    const a3 = C14*C8*C9*R13*R7*RL + C14*C8*C9*R13*R7*RT + C14*C8*C9*R7*RL*RT;
 
     return [
       [b0, b1, b2, b3],
