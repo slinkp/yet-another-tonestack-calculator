@@ -1,11 +1,11 @@
 ---
-id: Canarat95
-name: Canarat (1995 index card circuit)
+id: Canarat2000
+name: Canarat (mystery mod circa 2000)
 controls:
   RT: LogA
 
 
-description: does this even work?
+description: what was this even supposed to be?
 
 ---
 

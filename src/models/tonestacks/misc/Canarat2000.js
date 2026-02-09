@@ -1,13 +1,13 @@
 import { BaseTonestack } from '../BaseTonestack';
 import { Tapers, PotRole } from '~/utils/components';
 
-export class Canarat95 extends BaseTonestack {
+export class Canarat2000 extends BaseTonestack {
   static definition() {
     return {
-      id: 'Canarat95',
-      name: 'Canarat (1995 index card circuit)',
-      description: 'does this even work?',
-      schematic: 'Canarat95',
+      id: 'Canarat2000',
+      name: 'Canarat (mystery mod circa 2000)',
+      description: 'what was this even supposed to be?',
+      schematic: 'Canarat2000',
       components: {
         R13: 10e3,
         R7: 10e3,
