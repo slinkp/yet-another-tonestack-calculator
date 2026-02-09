@@ -27,7 +27,7 @@ import { Tilt } from './misc/Tilt'
 import { NeveShelvingHiLo } from './misc/NeveShelvingHiLo';
 import { Bench } from './misc/Bench';
 import { Wah } from './misc/Wah';
-
+import { Canarat95} from './misc/Canarat95';
 import { BigMuff } from './BigMuff/BigMuff';
 import { BigMuffHoof } from './BigMuff/BigMuffHoof';
 import { BigMuffMusket } from './BigMuff/BigMuffMusket';
@@ -91,7 +91,8 @@ export const topologies = {
     new Tilt(),
     new NeveShelvingHiLo(),
     new Bench(),
-    new Wah()
+    new Wah(),
+    new Canarat95(),      
   ],
   Basic: [
     new RCLowpass(),
