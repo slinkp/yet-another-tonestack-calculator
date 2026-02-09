@@ -5,8 +5,8 @@ export class Canarat95 extends BaseTonestack {
   static definition() {
     return {
       id: 'Canarat95',
-      name: 'Canarat (1995 index card circuit, revised 2026)',
-      description: 'Maybe this was the original 1995 mod topology! Unlikely these were the values though. I recall there being a parallel path for the highs somewhere in the circuit, and going in parallal with the two resistors rings a bell - and works. Increasing C9 deepens the mid scoop and lowers the freq, decreasing C9 flattens and raises the freq. Increasing C99 flattens the mid scoop and lowers the freq, decreasing deepens the scoop and raises the freq. Reducing RT (eg to 25k or lower) boosts overall volume but especially the treble.',
+      name: 'Canarat (1995, revised 2026)',
+      description: 'Maybe this was the original 1995 mod topology! Unlikely these were the values though. The cap in parallal with the two resistors rings a bell - and works. Increasing C9 deepens the mid scoop and lowers the freq, decreasing C9 flattens and raises the freq. Increasing C13 flattens the mid scoop and lowers the freq, decreasing deepens the scoop and raises the freq. Reducing RT (eg to 25k or lower) boosts overall volume but especially the treble.',
       schematic: 'Canarat95',
       components: {
         R12: 10e3,
