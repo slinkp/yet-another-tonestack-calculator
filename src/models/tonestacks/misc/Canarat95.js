@@ -5,18 +5,17 @@ export class Canarat95 extends BaseTonestack {
   static definition() {
     return {
       id: 'Canarat95',
-      name: 'Canarat (1995 index card circuit)',
-      description: 'maybe this was the mid scoop?',
+      name: 'Canarat (1995 index card circuit, revised 2026)',
+      description: 'Maybe this was the original 1995 mod topology! Unlikely these were the values though. I recall there being a parallel path for the highs somewhere in the circuit, and going in parallal with the two resistors rings a bell - and works. Increasing C9 deepens the mid scoop and lowers the freq, decreasing C9 flattens and raises the freq. Increasing C99 flattens the mid scoop and lowers the freq, decreasing deepens the scoop and raises the freq. Reducing RT (eg to 25k or lower) boosts overall volume but especially the treble.',
       schematic: 'Canarat95',
       components: {
         R12: 10e3,
         R9: 10e3,
-        RT: 25e3,
+        RT: 50e3,
         RL: 1e6,
-        C10: 22e-9,
-        C13: 0.22e-6,
-        C9: 22e-9,
-        C99: 1e-9,
+        C13: 11e-9,
+        C14: 3.3e-9,
+        C9: 27e-9,
       },
       controls: {
         RT: {
@@ -29,20 +28,19 @@ export class Canarat95 extends BaseTonestack {
   }
 
   calculateCoefficients(controlValues) {
-    const { R12, R9, RT, RL, C10, C13, C9, C99 } = this.extractCoefficientVariables(controlValues);
+    const { R12, R9, RT, RL, C13, C14, C9 } = this.extractCoefficientVariables(controlValues);
 
-    const b0 = 0;
-    const b1 = C10*C13*RL;
-    const b2 = C10*C13*C99*R12*RL + C10*C13*C99*R9*RL;
-    const b3 = C10*C13*C9*C99*R12*R9*RL;
+    const b0 = RL;
+    const b1 = C13*R12*RL + C13*R9*RL;
+    const b2 = C13*C9*R12*R9*RL;
 
-    const a0 = C10 + C13 + C9;
-    const a1 = C10*C13*R12 + C10*C13*R9 + C10*C13*RL + C10*C13*RT + C10*C9*R12 + C10*C9*RL + C10*C99*R12 + C10*C99*R9 + C13*C9*R9 + C13*C9*RT + C13*C99*R12 + C13*C99*R9 + C9*C99*R12 + C9*C99*R9;
-    const a2 = C10*C13*C9*R12*R9 + C10*C13*C9*R12*RT + C10*C13*C9*R9*RL + C10*C13*C9*RL*RT + C10*C13*C99*R12*RL + C10*C13*C99*R12*RT + C10*C13*C99*R9*RL + C10*C13*C99*R9*RT + C10*C9*C99*R12*R9 + C10*C9*C99*R12*RL + C10*C9*C99*R9*RL + C13*C9*C99*R12*R9 + C13*C9*C99*R12*RT + C13*C9*C99*R9*RT;
-    const a3 = C10*C13*C9*C99*R12*R9*RL + C10*C13*C9*C99*R12*R9*RT + C10*C13*C9*C99*R12*RL*RT + C10*C13*C9*C99*R9*RL*RT;
+    const a0 = R12 + R9 + RL + RT;
+    const a1 = C13*R12*RL + C13*R12*RT + C13*R9*RL + C13*R9*RT + C14*R12*RL + C14*R9*RL + C14*RL*RT + C9*R12*R9 + C9*R12*RT + C9*R9*RL + C9*RL*RT;
+    const a2 = C13*C14*R12*RL*RT + C13*C14*R9*RL*RT + C13*C9*R12*R9*RL + C13*C9*R12*R9*RT + C13*C9*R12*RL*RT + C13*C9*R9*RL*RT + C14*C9*R12*R9*RL + C14*C9*R12*RL*RT;
+    const a3 = C13*C14*C9*R12*R9*RL*RT;
 
     return [
-      [b0, b1, b2, b3],
+      [b0, b1, b2],
       [a0, a1, a2, a3]
     ];
   }

@@ -21,6 +21,7 @@ export class Canarat2000 extends BaseTonestack {
         RT: {
           taper: Tapers.LogA,
           role: PotRole.VR,
+          reverse: true,
         },
       }
     };
