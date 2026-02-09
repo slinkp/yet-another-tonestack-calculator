@@ -10,7 +10,7 @@ description: does this even work?
 ---
 
 RIN IN 2 10; right
-R1 2b 3 39e3; right
+R7 2b 3 10e3; right
 R2 4 0a 22e3; up
 C8 3 0 3.3e-9; down, _
 C2 2a 4 4e-9; right
