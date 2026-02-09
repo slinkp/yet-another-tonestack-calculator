@@ -29,6 +29,7 @@ import { Bench } from './misc/Bench';
 import { Wah } from './misc/Wah';
 import { Canarat95} from './misc/Canarat95';
 import { Canarat2000} from './misc/Canarat2000';
+import { Canarat95card} from './misc/Canarat95card';
 import { BigMuff } from './BigMuff/BigMuff';
 import { BigMuffHoof } from './BigMuff/BigMuffHoof';
 import { BigMuffMusket } from './BigMuff/BigMuffMusket';
@@ -94,7 +95,8 @@ export const topologies = {
     new Bench(),
     new Wah(),
     new Canarat95(),
-    new Canarat2000(),
+      new Canarat2000(),
+      new Canarat95card
   ],
   Basic: [
     new RCLowpass(),
