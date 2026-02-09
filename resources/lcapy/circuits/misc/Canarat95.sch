@@ -12,7 +12,7 @@ description: does this even work?
 RIN IN 2 10; right
 R1 2b 3 39e3; right
 R2 4 0a 22e3; up
-C1 3 0 10e-9; down, _
+C8 3 0 3.3e-9; down, _
 C2 2a 4 4e-9; right
 C9 5 OUTa 22e-9; right=0.525
 RV_T 4 3 5 100e3; down
