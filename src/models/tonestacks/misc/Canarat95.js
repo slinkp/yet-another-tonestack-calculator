@@ -6,41 +6,42 @@ export class Canarat95 extends BaseTonestack {
     return {
       id: 'Canarat95',
       name: 'Canarat (1995 index card circuit)',
-      description: 'does this even work?',
+      description: 'what was I thinking?',
       schematic: 'Canarat95',
       components: {
-        R13: 10e3,
-        R7: 10e3,
+        R12: 10e3,
+        R9: 10e3,
         RT: 100e3,
         RL: 1e6,
-        C14: 10e-9,
-        C8: 3.3e-9,
+        C10: 22e-9,
+        C13: 10e-9,
         C9: 22e-9,
+        C99: 1e-9,
       },
       controls: {
         RT: {
           taper: Tapers.LogA,
           role: PotRole.VR,
+          reverse: true,
         },
       }
     };
   }
 
   calculateCoefficients(controlValues) {
-    const { R13, R7, RT, RL, C14, C8, C9 } = this.extractCoefficientVariables(controlValues);
+    const { R12, R9, RT, RL, C10, C13, C9, C99 } = this.extractCoefficientVariables(controlValues);
 
     const b0 = 0;
-    const b1 = C9*RL;
-    const b2 = C14*C9*R13*RL + C14*C9*R7*RL + C14*C9*RL*RT;
-    const b3 = C14*C8*C9*R13*R7*RL;
+    const b1 = C10*C13*RL;
+    const b2 = C10*C13*C99*RL*RT;
 
-    const a0 = 1;
-    const a1 = C14*R13 + C14*R7 + C14*RT + C8*R7 + C9*R13 + C9*R7 + C9*RL;
-    const a2 = C14*C8*R13*R7 + C14*C8*R7*RT + C14*C9*R13*RL + C14*C9*R13*RT + C14*C9*R7*RL + C14*C9*R7*RT + C14*C9*RL*RT + C8*C9*R13*R7 + C8*C9*R7*RL;
-    const a3 = C14*C8*C9*R13*R7*RL + C14*C8*C9*R13*R7*RT + C14*C8*C9*R7*RL*RT;
+    const a0 = C10 + C13 + C9;
+    const a1 = C10*C13*R12 + C10*C13*R9 + C10*C13*RL + C10*C13*RT + C10*C9*R12 + C10*C9*RL + C10*C99*RT + C13*C9*R9 + C13*C9*RT + C13*C99*RT + C9*C99*RT;
+    const a2 = C10*C13*C9*R12*R9 + C10*C13*C9*R12*RT + C10*C13*C9*R9*RL + C10*C13*C9*RL*RT + C10*C13*C99*R12*RT + C10*C13*C99*R9*RT + C10*C13*C99*RL*RT + C10*C9*C99*R12*RT + C10*C9*C99*RL*RT + C13*C9*C99*R9*RT;
+    const a3 = C10*C13*C9*C99*R12*R9*RT + C10*C13*C9*C99*R9*RL*RT;
 
     return [
-      [b0, b1, b2, b3],
+      [b0, b1, b2],
       [a0, a1, a2, a3]
     ];
   }

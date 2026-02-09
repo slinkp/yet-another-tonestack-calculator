@@ -5,19 +5,19 @@ controls:
   RT: LogA
 
 
-description: does this even work?
+description: what was I thinking?
 
 ---
 
-W IN 2; right
-R7 2b 2mid 10e3; right
-C8 2mid 0 3.3e-9; down
-R13 2mid 3 10e3; right
-C14 2a 4 10e-9; right
-C9 3 OUTa 22e-9; right
-R_T 5 4 100e3; right, variable
+
+C13 IN 2 10e-9; right
+RT 2 5 100e3; right, variable, *
+R9 5 3 10e3; right
+C9 3 0 22e-9; down
+R12 3 4 10e3; right
+C10 4 OUT 22e-9; right
 RL OUT 0 1e6; down
-W 2 2a; up=0.5
-W 2 2b; down=0.5
-W 5 3; down=1.0
-W OUTa OUT; right=0.1
+
+W1 2 6; down
+C99 6 7 1e-9; right
+W2 7 5; up
