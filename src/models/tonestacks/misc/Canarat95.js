@@ -6,15 +6,15 @@ export class Canarat95 extends BaseTonestack {
     return {
       id: 'Canarat95',
       name: 'Canarat (1995 index card circuit)',
-      description: 'what was I thinking?',
+      description: 'maybe this was the mid scoop?',
       schematic: 'Canarat95',
       components: {
         R12: 10e3,
         R9: 10e3,
-        RT: 100e3,
+        RT: 25e3,
         RL: 1e6,
         C10: 22e-9,
-        C13: 10e-9,
+        C13: 0.22e-6,
         C9: 22e-9,
         C99: 1e-9,
       },

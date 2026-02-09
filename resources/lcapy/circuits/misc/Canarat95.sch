@@ -5,13 +5,13 @@ controls:
   RT: LogA
 
 
-description: what was I thinking?
+description: maybe this was the mid scoop?
 
 ---
 
 
-C13 IN 2 10e-9; right
-RT 2 5 100e3; right, variable, *
+C13 IN 2 220e-9; right
+RT 2 5 25e3; right, variable, *
 R9 5 3 10e3; right
 C9 3 0 22e-9; down
 R12 3 4 10e3; right
