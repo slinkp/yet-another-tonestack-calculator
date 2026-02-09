@@ -18,6 +18,6 @@ R12 3 4 10e3; right
 C10 4 OUT 22e-9; right
 RL OUT 0 1e6; down
 
-W1 2 6; down
+W1 5 6; up
 C99 6 7 1e-9; right
-W2 7 5; up
+W2 7 4; down
