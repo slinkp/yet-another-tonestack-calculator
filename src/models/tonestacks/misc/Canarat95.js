@@ -11,15 +11,15 @@ export class Canarat95 extends BaseTonestack {
       components: {
         R12: 10e3,
         R9: 10e3,
-        RT: 50e3,
+        RT: 100e3,
         RL: 1e6,
-        C13: 11e-9,
-        C14: 3.3e-9,
-        C9: 27e-9,
+        C13: 47e-9,
+        C14: 1e-9,
+        C9: 10e-9,
       },
       controls: {
         RT: {
-          taper: Tapers.Linear,
+          taper: Tapers.LogC,
           role: PotRole.VR,
           reverse: true,
         },
