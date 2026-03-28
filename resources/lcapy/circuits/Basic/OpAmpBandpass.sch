@@ -11,18 +11,11 @@ description: something
 ;; I would make a dual-ganged pot here if I knew how
 R_CRAP IN N_OANONINV 1e6; right
 
-;;W1 N2 N3; up
-
-;; For debug only
-A5 N5; l_=N5, yoffset=0.5
-
-W4 N5 OUT; down
-
 ;; NEW FEEDBACK
-W99 N_OAINV N99; down
-R98 N99 N100 10e5; down
+W99 N_OAINV N_FBC; down
+W999999 N_FBC N_FBR; down
+R98 N_FBR N100 10e5; down
 C98 N100 0 11e-10; down
-
 
 
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
@@ -41,6 +34,6 @@ E N_OAOUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, scale=0
 W9999 N_OAOUT OUT; right
 
 W8888 N_OAOUT N_FBXYZ; down
-RFB N99 N_FBXYZ 100e6 ; right, variable, *
+RFB N_FBR N_FBXYZ 100e6 ; right, variable, *
 
 RL OUT 0 10e5; down
