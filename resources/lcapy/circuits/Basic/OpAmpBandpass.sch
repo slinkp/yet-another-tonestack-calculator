@@ -12,8 +12,8 @@ description: something
 R_CRAP IN N_OANONINV 1e6; right
 
 ;; NEW FEEDBACK
-W99 N_OAINV N_FBCL; down
-W_FBLDOWN N_FBCL N_FBRL; down
+W_FBLEFTTOC2 N_OAINV N_FBC2L; down
+W_FBLEFTTOR N_FBC2L N_FBRL; down
 R1 N_FBRL N100 10e5; down
 C1 N100 0 11e-10; down
 
@@ -33,7 +33,9 @@ E N_OAOUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, scale=0
 
 W_OUT N_OAOUT OUT; right
 
-W8888 N_OAOUT N_FBRR; down
+W_FBRIGHTTOC2 N_OAOUT N_FBCR; down
+W_FBRIGHTTOR N_FBCR N_FBRR; down
+
 RFB N_FBRL N_FBRR 100e6 ; right, variable, *
 
 RL OUT 0 10e5; down
