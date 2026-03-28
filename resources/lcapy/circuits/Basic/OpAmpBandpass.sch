@@ -31,9 +31,9 @@ C1 N100 0 11e-10; down
 ;; i'm using "typical" value from TL071 data sheet of 118dB = approx 630,957
 E N_OAOUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, scale=0.75
 
-W9999 N_OAOUT OUT; right
+W_OUT N_OAOUT OUT; right
 
-W8888 N_OAOUT N_FBXYZ; down
-RFB N_FBRL N_FBXYZ 100e6 ; right, variable, *
+W8888 N_OAOUT N_FBRR; down
+RFB N_FBRL N_FBRR 100e6 ; right, variable, *
 
 RL OUT 0 10e5; down
