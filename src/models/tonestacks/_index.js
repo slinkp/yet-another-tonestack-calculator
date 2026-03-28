@@ -37,6 +37,7 @@ import { RCLowpass } from './Basic/RCLowpass';
 import { RCHighpass } from './Basic/RCHighpass';
 import { RCLowpassShelving } from './Basic/RCLowpassShelving';
 import { RCHighpassShelving } from './Basic/RCHighpassShelving';
+import { OpAmpBandpass } from './Basic/OpAmpBandpass';
 
 import { JamesPassiveDualBassCap } from './James/JamesPassiveDualBassCap';
 import { JamesActiveDualBassCap } from './James/JamesActiveDualBassCap';
@@ -96,7 +97,8 @@ export const topologies = {
     new RCLowpass(),
     new RCLowpassShelving(),
     new RCHighpass(),
-    new RCHighpassShelving()
+    new RCHighpassShelving(),
+    new OpAmpBandpass()
   ],
   'Big Muff': [
     new BigMuff(),
