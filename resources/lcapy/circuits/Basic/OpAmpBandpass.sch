@@ -2,14 +2,14 @@
 id: opampbandpass
 name: Basic Active Bandpass
 controls:
-  R1B: Linear
+  RFB: Linear
 
 description: something
 
 ---
 
 ;; I would make a dual-ganged pot here if I knew how
-R1B IN N_OANONINV 1e6; right, variable, *
+R_CRAP IN N_OANONINV 1e6; right
 
 ;; For butterworth set C1 = 2*C2
 ;;C2 N4 N5 22e-10; right
@@ -29,6 +29,7 @@ R98 N99 N100 10e5; down
 C98 N100 0 11e-10; down
 
 
+
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
 ;; there's mentions of them scattered in various places,
 ;; but what you really want for simulation purposes is
@@ -40,8 +41,11 @@ C98 N100 0 11e-10; down
 ;; nor common-mode gain Ac=0, so we set them very small.
 ;; Unclear what default Ad (differential or open-loop gain) is, but
 ;; i'm using "typical" value from TL071 data sheet of 118dB = approx 630,957
-E OUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, scale=0.75
+E N_OAOUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, scale=0.75
 
-WFEEDBACK N4 N5 ; right
+W9999 N_OAOUT OUT; right
+
+W8888 N_OAOUT N_FBXYZ; down
+RFB N99 N_FBXYZ 100e6 ; right, variable, *
 
 RL OUT 0 10e5; down
