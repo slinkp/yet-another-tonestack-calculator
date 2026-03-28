@@ -3,12 +3,14 @@ id: opampbandpass
 name: Basic Active Bandpass
 controls:
   R_FB: Linear
+  RV_ATTEN: Linear
 
 description: Simple tuning of a non-inverting op amp gain stage. At unity gain, frequency response is flat. C2 forms an integrator / shelving lowpass filter, and C1 forms a differentiator / shelving highpass filter. When C2 is small, it\'s a compensation capacitor whose job is to prevent oscillation. If desired, lower values can be used to also reduce treble, eg harshness in high-gain circuits. If C1 is large, it can decouple any op amp bias from ground and remove subsonics. But at high gain, smaller values are often used to also tighten the lows and/or make distortion less fuzzy.
 
 ---
 
-W_IN IN N_OANONINV; right
+W_IN IN N_ATTEN; right
+RV_ATTEN N_ATTEN 0 N_OANONINV 100e3; down
 
 ;; NEW FEEDBACK
 W_FBLEFTTOC2 N_OAINV N_FBC2L; down
