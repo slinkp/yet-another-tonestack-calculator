@@ -2,13 +2,13 @@
 id: opampbandpass
 name: Basic Active Bandpass
 controls:
-  RFB: Linear
+  R_FB: Linear
 
 description: something
 
 ---
 
-R_CRAP IN N_OANONINV 1e6; right
+W_IN IN N_OANONINV; right
 
 ;; NEW FEEDBACK
 W_FBLEFTTOC2 N_OAINV N_FBC2L; down
@@ -37,7 +37,9 @@ W_OUT N_OAOUT OUT; right
 W_FBRIGHTTOC2 N_OAOUT N_FBC2R; down
 W_FBRIGHTTOR N_FBC2R N_FBRR; down
 
-RFB N_FBRL N_FBRR 50e3 ; right, variable, *
+R_FB N_FBRL N_FBRR 50e3 ; right, variable
 C2 N_FBC2L N_FBC2R 100e-12; right
+
+;; TODO add an attenuator in front or after
 
 RL OUT 0 10e5; down
