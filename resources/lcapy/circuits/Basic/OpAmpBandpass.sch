@@ -11,16 +11,11 @@ description: something
 ;; I would make a dual-ganged pot here if I knew how
 R_CRAP IN N_OANONINV 1e6; right
 
-;; For butterworth set C1 = 2*C2
-;;C2 N4 N5 22e-10; right
-
 ;;W1 N2 N3; up
 
 ;; For debug only
-A4 N4; l_=N4, yoffset=0.5
 A5 N5; l_=N5, yoffset=0.5
 
-W3 N4 N_OAINV; down
 W4 N5 OUT; down
 
 ;; NEW FEEDBACK
