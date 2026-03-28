@@ -12,10 +12,10 @@ description: something
 R_CRAP IN N_OANONINV 1e6; right
 
 ;; NEW FEEDBACK
-W99 N_OAINV N_FBC; down
-W999999 N_FBC N_FBR; down
-R98 N_FBR N100 10e5; down
-C98 N100 0 11e-10; down
+W99 N_OAINV N_FBCL; down
+W_FBLDOWN N_FBCL N_FBRL; down
+R1 N_FBRL N100 10e5; down
+C1 N100 0 11e-10; down
 
 
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
@@ -34,6 +34,6 @@ E N_OAOUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, scale=0
 W9999 N_OAOUT OUT; right
 
 W8888 N_OAOUT N_FBXYZ; down
-RFB N_FBR N_FBXYZ 100e6 ; right, variable, *
+RFB N_FBRL N_FBXYZ 100e6 ; right, variable, *
 
 RL OUT 0 10e5; down
