@@ -20,8 +20,6 @@ W_FBLEFTTOR N_FBC2L N_FBRL; down
 ;; Claw sharpener: 1e3 maybe 2e3
 R1 N_FBRL N100 1e3; down
 
-
-;; High pass.
 ;; claw sharpener default of <= 3/28: 10e-9 (10n)
 ;; better demo: 470e-9 (470n)
 ;; Full range:
@@ -53,7 +51,9 @@ R_FB N_FBRL N_FBRR 50e3 ; right, variable
 ;; LOWPASS in FB loop
 ;; claw sharpener default as of <= 3/28: 33e-10 aka 3.3nF
 ;; Demo default 100e-12
-C2 N_FBC2L N_FBC2R 33e-10; right
+C2 N_FBC2L N_FB99 47e-12; right
+;; TODO does this work
+R99 N_FB99 N_FBC2R 1e3; right
 
 ;; TODO there must be a way to control connection length without extra wires?
 
