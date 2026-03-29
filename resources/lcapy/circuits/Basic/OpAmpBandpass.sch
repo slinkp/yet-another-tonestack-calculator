@@ -27,8 +27,9 @@ R1 N_FBRL N100 1e3; down
 ;; Full range:
 ;; 4700e-9 aka 4.7uF is good for full range? at max boost, flat down to 40hz,
 ;; and about 3dB down at 30Hz.
+;; Or 6800e-9
 ;; 10uF or 10e-6 would be ~ 2dB down at 20Hz.
-C1 N100 0 10e-9; down
+C1 N100 0 6800e-9; down
 
 
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
@@ -49,13 +50,17 @@ W_FBRIGHTTOR N_FBC2R N_FBRR; down
 
 R_FB N_FBRL N_FBRR 50e3 ; right, variable
 
-;; LOWPASS
+;; LOWPASS in FB loop
 ;; claw sharpener default as of <= 3/28: 33e-10 aka 3.3nF
 ;; Demo default 100e-12
 C2 N_FBC2L N_FBC2R 33e-10; right
 
 ;; TODO there must be a way to control connection length without extra wires?
-W_ATTEN N_OAOUT N_ATTEN;
+
+;; Lowpass RC after gain
+R3 N_OAOUT N_POSTLP 1e3; right
+C3 N_POSTLP 0 33e-10; down
+W_ATTEN N_POSTLP N_ATTEN; right
 
 RVATTEN N_ATTEN 0 N_ATTENOUT 100e3; down
 
