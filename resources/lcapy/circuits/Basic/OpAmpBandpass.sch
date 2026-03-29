@@ -29,7 +29,6 @@ R1 N_FBRL N100 1e3; down
 ;; 10uF or 10e-6 would be ~ 2dB down at 20Hz.
 C1 N100 0 6800e-9; down
 
-
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
 ;; there's mentions of them scattered in various places,
 ;; but what you really want for simulation purposes is
@@ -57,10 +56,7 @@ R99 N_FB99 N_FBC2R 1e3; right
 
 ;; TODO there must be a way to control connection length without extra wires?
 
-;; Lowpass RC after gain
-R3 N_OAOUT N_POSTLP 1e3; right
-C3 N_POSTLP 0 33e-10; down
-W_ATTEN N_POSTLP N_ATTEN; right
+W_ATTEN N_OAOUT N_ATTEN; right
 
 RVATTEN N_ATTEN 0 N_ATTENOUT 100e3; down
 
