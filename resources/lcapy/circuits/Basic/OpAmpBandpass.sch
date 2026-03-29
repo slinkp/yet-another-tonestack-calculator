@@ -3,6 +3,7 @@ id: opampbandpass
 name: Basic Active Bandpass
 controls:
   RFB: Linear
+  RATTEN: Linear
 
 description: Simple tuning of a non-inverting op amp gain stage. At unity gain, frequency response is flat. C2 forms an integrator / shelving lowpass filter, and C1 forms a differentiator / shelving highpass filter. When C2 is small, it\'s a compensation capacitor whose job is to prevent oscillation. If desired, lower values can be used to also reduce treble, eg harshness in high-gain circuits. If C1 is large, it can decouple any op amp bias from ground and remove subsonics. But at high gain, smaller values are often used to also tighten the lows and/or make distortion less fuzzy.
 
@@ -15,8 +16,19 @@ W_FBLEFTTOC2 N_OAINV N_FBC2L; down
 W_FBLEFTTOR N_FBC2L N_FBRL; down
 
 ;; HIGHPASS
-R1 N_FBRL N100 10e3; down
-C1 N100 0 47e-9; down
+;; Good demo: 10e3
+;; Claw sharpener: 1e3 maybe 2e3
+R1 N_FBRL N100 1e3; down
+
+
+;; High pass.
+;; claw sharpener default of <= 3/28: 10e-9 (10n)
+;; better demo: 470e-9 (470n)
+;; Full range:
+;; 4700e-9 aka 4.7uF is good for full range? at max boost, flat down to 40hz,
+;; and about 3dB down at 30Hz.
+;; 10uF or 10e-6 would be ~ 2dB down at 20Hz.
+C1 N100 0 10e-9; down
 
 
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
@@ -32,14 +44,21 @@ C1 N100 0 47e-9; down
 ;; i'm using "typical" value from TL071 data sheet of 118dB = approx 630,957
 E N_OAOUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, scale=0.75
 
-W_OUT N_OAOUT OUT; right
-
 W_FBRIGHTTOC2 N_OAOUT N_FBC2R; down
 W_FBRIGHTTOR N_FBC2R N_FBRR; down
 
 R_FB N_FBRL N_FBRR 50e3 ; right, variable
-C2 N_FBC2L N_FBC2R 100e-12; right
 
-;; TODO add an attenuator in front or after
+;; LOWPASS
+;; claw sharpener default as of <= 3/28: 33e-10 aka 3.3nF
+;; Demo default 100e-12
+C2 N_FBC2L N_FBC2R 33e-10; right
+
+;; TODO there must be a way to control connection length without extra wires?
+W_ATTEN N_OAOUT N_ATTEN;
+
+RVATTEN N_ATTEN 0 N_ATTENOUT 100e3; down
+
+W_OUT N_ATTENOUT OUT; right
 
 RL OUT 0 10e5; down
