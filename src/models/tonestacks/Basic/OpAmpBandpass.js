@@ -23,7 +23,7 @@ export class OpAmpBandpass extends BaseTonestack {
       },
       controls: {
         RFB: {
-          taper: Tapers.Linear,
+          taper: Tapers.LogA,
           role: PotRole.VR,
         },
         RATTEN: Tapers.Linear,
