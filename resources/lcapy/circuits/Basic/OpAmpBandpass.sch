@@ -29,6 +29,9 @@ R1 N_FBRL N100 1e3; down
 ;; 10uF or 10e-6 would be ~ 2dB down at 20Hz.
 C1 N100 0 6800e-9; down
 
+;; Control the highpass shelf??
+R88 N100 0 47e3; left
+
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
 ;; there's mentions of them scattered in various places,
 ;; but what you really want for simulation purposes is
@@ -50,9 +53,9 @@ R_FB N_FBRL N_FBRR 50e3 ; right, variable
 ;; LOWPASS in FB loop
 ;; claw sharpener default as of <= 3/28: 33e-10 aka 3.3nF
 ;; Demo default 100e-12
-C2 N_FBC2L N_FB99 47e-12; right
-;; TODO does this work
-R99 N_FB99 N_FBC2R 1e3; right
+C2 N_FBC2L N_FB99 47e-9; right
+;; LOWPASS STOP-BAND SHELF CONTROL
+R99 N_FB99 N_FBC2R 47e2; right
 
 ;; TODO there must be a way to control connection length without extra wires?
 
