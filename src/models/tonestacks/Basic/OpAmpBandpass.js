@@ -10,42 +10,13 @@ export class OpAmpBandpass extends BaseTonestack {
       schematic: 'OpAmpBandpass',
       components: {
         R1: 1e3,
-        R88: 47e3,
-        R99: 4.7e3,
+        R88: 4.7e3,
+        R99: 22e3,
         RATTEN: 100e3,
-        RFB: 50e3,
+        RFB: 100e3,
         RL: 1e6,
-        C1: 6.8e-6,
-        C2: 47e-9,
-        E: 631e3,
-        E_Ac: 100e-12,
-        E_Ro: 100e-12,
-      },
-      controls: {
-        RFB: {
-          taper: Tapers.LogA,
-          role: PotRole.VR,
-        },
-        RATTEN: Tapers.Linear,
-      }
-    };
-  }
-
-  static definition() {
-    return {
-      id: 'opampbandpass',
-      name: 'Basic Active Bandpass',
-      description: 'Simple tuning of a non-inverting op amp gain stage. At unity gain, frequency response is flat. C2 forms an integrator / shelving lowpass filter, and C1 forms a differentiator / shelving highpass filter. When C2 is small, it\'s a compensation capacitor whose job is to prevent oscillation. If desired, lower values can be used to also reduce treble, eg harshness in high-gain circuits. If C1 is large, it can decouple any op amp bias from ground and remove subsonics. But at high gain, smaller values are often used to also tighten the lows and/or make distortion less fuzzy.',
-      schematic: 'OpAmpBandpass',
-      components: {
-        R1: 1e3,
-        R88: 47e3,
-        R99: 4.7e3,
-        RATTEN: 100e3,
-        RFB: 50e3,
-        RL: 1e6,
-        C1: 6.8e-6,
-        C2: 47e-9,
+        C1: 1.2e-6,
+        C2: 3.3e-9,
         E: 631e3,
         E_Ac: 100e-12,
         E_Ro: 100e-12,
