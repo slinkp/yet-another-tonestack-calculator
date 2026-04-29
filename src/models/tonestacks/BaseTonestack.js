@@ -53,6 +53,15 @@ export class BaseTonestack {
     this.controls = controls;
     this.controlOptions = options;
     this.controlValues = cv;
+
+    this.gangedFollowerNames = new Set();
+    if (def.gangedControls) {
+      for (const followers of Object.values(def.gangedControls)) {
+        for (const f of followers) {
+          this.gangedFollowerNames.add(f);
+        }
+      }
+    }
   }
 
   newInstance() {
@@ -98,6 +107,11 @@ export class BaseTonestack {
 
   isControl(name) {
     return this.controls.hasOwnProperty(name);
+  }
+
+  /** Ganged followers track a primary control; hide from component editors (nominal value still in `components`). */
+  isGangedFollower(name) {
+    return this.gangedFollowerNames.has(name);
   }
 
   // Get control values with applied potentiometer tapers
