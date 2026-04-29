@@ -7,7 +7,7 @@ gangedControls:
 controls:
   R1A: LogC
 
-description: R1A and R1B are typically one dual-ganged pot. For butterworth response (12dB/octave and no resonant peak), set C1 to twice C2. For higher Q, increase that ratio. R2 and R3 are optional, and should have the same value, which sets an upper bound on the frequency control.
+description: R1A and R1B are a dual-ganged pot. For butterworth response (12dB/octave and no resonant peak), set C1 to twice C2. For higher Q, increase that ratio. R2 and R3 are optional, and should have the same value, which sets an upper bound on the frequency control.
 
 ---
 
@@ -19,7 +19,7 @@ R3 N100 N_OANONINV 1e3; right
 
 ;; For butterworth set C1 = 2*C2
 C1 N3 N4 22e-10; right
-C2 N_OANONINV 0 11e-10; down
+C2 N_OANONINV 0 11e-10; down=1.5
 W1 N2 N3; up
 
 ;; For debug only
@@ -37,14 +37,13 @@ W1 N2 N3; up
 ;; nor common-mode gain Ac=0, so we set them very small.
 ;; Unclear what default Ad (differential or open-loop gain) is, but
 ;; i'm using "typical" value from TL071 data sheet of 118dB = approx 630,957
-E_opamp OUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, mirror, scale=0.80, size=0.70, nowires=true
-
+E OUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, mirrorinputs, scale=0.80, size=0.70, l_=OA1
 
 ;; Feedback loop
-WFEEDBACK N4 N5 ; right, violet
-WFBDOWN N4 N_OAINV; down, red
-WOUT N5 OUT; down, blue
+WFEEDBACK N4 N5 ; right
+WFBDOWN N4 N_OAINV; down
+WOUT N5 OUT; down
 
 
-RL OUT 0 10e5; down
+RL OUT 0 10e5; down=1.5
 
