@@ -1,15 +1,17 @@
 ---
 id: skl0
 name: Sallen–Key Low-pass (Butterworth, unity)
+gangedControls:
+  R1A:
+    - R1B
 controls:
   R1A: LogC
-  R1B: LogC
 
 description: R1A and R1B are typically one dual-ganged pot. For butterworth response (12dB/octave and no resonant peak), set C1 to twice C2. For higher Q, increase that ratio. R2 and R3 are optional, and should have the same value, which sets an upper bound on the frequency control.
 
 ---
 
-;; I would make a dual-ganged pot here if I knew how
+;; R1A (primary) and R1B (follower): one UI control via gangedControls in frontmatter
 R1A IN N99 1e6; right, variable, *
 R2 N99 N2 1e3; right
 R1B N2 N100  1e6; right, variable, *
