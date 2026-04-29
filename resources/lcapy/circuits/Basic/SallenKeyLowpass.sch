@@ -26,9 +26,6 @@ W1 N2 N3; up
 ;A4 N4; l_=N4, yoffset=0.5
 ;A5 N5; l_=N5, yoffset=0.5
 
-W3 N4 N_OAINV; down
-W4 N5 OUT; down
-
 ;; Defining opamps in lcapy for simulation is confusing AF for a novice:
 ;; there's mentions of them scattered in various places,
 ;; but what you really want for simulation purposes is
@@ -40,8 +37,14 @@ W4 N5 OUT; down
 ;; nor common-mode gain Ac=0, so we set them very small.
 ;; Unclear what default Ad (differential or open-loop gain) is, but
 ;; i'm using "typical" value from TL071 data sheet of 118dB = approx 630,957
-E OUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, mirror, scale=0.5
+E_opamp OUT 0 opamp N_OANONINV N_OAINV Ro=1e-10 Ac=1e-10 Ad=631000; right, mirror, scale=0.80, size=0.70, nowires=true
 
-WFEEDBACK N4 N5 ; right
+
+;; Feedback loop
+WFEEDBACK N4 N5 ; right, violet
+WFBDOWN N4 N_OAINV; down, red
+WOUT N5 OUT; down, blue
+
 
 RL OUT 0 10e5; down
+
