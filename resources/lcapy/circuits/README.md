@@ -62,3 +62,9 @@ The netlist is mostly in `lcapy` format, but with some considerations:
 ## Component Values
 
 Component values can be specified in any of (or both, but don't do it) netlist (inline) and YAML frontmatter, with frontmatter taking precedence over the netlist. The former is more concise though, and it's easier to see that all components have values.
+
+## Global attributes not supported
+
+Currently because of implementation details, there is no way to provide global
+drawing control attributes such as
+`;help_lines=1` that you might see in lcapy netlist docs.
