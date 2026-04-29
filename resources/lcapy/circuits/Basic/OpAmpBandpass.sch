@@ -18,7 +18,7 @@ W_FBLEFTTOR N_FBC2L N_FBRL; down
 ;; HIGHPASS
 ;; Good demo: 10e3
 ;; Claw sharpener: 1e3 maybe 2e3
-R1 N_FBRL N100 1e3; down
+R1 N_DEFIZZL  N100 1e3; down
 
 ;; claw sharpener default of <= 3/28: 10e-9 (10n)
 ;; better demo: 470e-9 (470n)
@@ -51,12 +51,18 @@ W_FBRIGHTTOC2 N_OAOUT N_FBC2R; down
 W_FBRIGHTTOR N_FBC2R N_FBRR; down
 
 R_FB N_FBRL N_FBRR 100e3 ; right, variable
+W_DEFIZZL N_FBRL N_DEFIZZL; down
 
-;; LOWPASS in FB loop
+;; TUNEABLE LOWPASS in FB loop
 ;; claw sharpener board from  3/28-4/8/26: 33e-10 aka 3.3nF
 C2 N_FBC2L N_FB99 33e-10; right
 ;; LOWPASS STOP-BAND SHELF CONTROL
-R99 N_FB99 N_FBC2R 22e3; right
+R99 N_FB99 N_FBC2R 68e3; right
+
+;; DEFIZZ / STABILITY
+W_DEFIZZR N_FBRR N_DEFIZZR; down
+W_DEFIZZL N_FBRL N_DEFIZZL; down
+C8 N_DEFIZZL N_DEFIZZR 200e-12; right
 
 ;; TODO there must be a way to control connection length without extra wires?
 
