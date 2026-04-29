@@ -176,6 +176,22 @@ export class BaseTonestack {
       }
     }
 
+    const ganged = this.constructor.definition().gangedControls;
+    if (ganged) {
+      for (const primary of Object.keys(ganged)) {
+        const followers = ganged[primary];
+        for (const follower of followers) {
+          res[follower] = res[primary];
+          const k1 = `${primary}1`;
+          const k2 = `${primary}2`;
+          if (Object.prototype.hasOwnProperty.call(res, k1)) {
+            res[`${follower}1`] = res[k1];
+            res[`${follower}2`] = res[k2];
+          }
+        }
+      }
+    }
+
     return res;
   }
 
