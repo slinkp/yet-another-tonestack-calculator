@@ -26,25 +26,23 @@ export class SallenKeyLowpass extends BaseTonestack {
           role: PotRole.VR,
           reverse: true,
         },
-        R1B: {
-          taper: Tapers.LogC,
-          role: PotRole.VR,
-          reverse: true,
-        },
-      }
+      },
+      gangedControls: {
+        R1A: ['R1B'],
+      },
     };
   }
 
   calculateCoefficients(controlValues) {
-    const { R1A, R1B, R2, R3, RL, C1, C2, E, E_Ac, E_Ro } = this.extractCoefficientVariables(controlValues);
+    const { R1A, R2, R3, RL, C1, C2, E, E_Ac, E_Ro } = this.extractCoefficientVariables(controlValues);
 
     const b0 = 2*E*RL + E_Ac*RL;
     const b1 = 2*C1*E_Ro*RL;
-    const b2 = 2*C1*C2*E_Ro*R1B*RL + 2*C1*C2*E_Ro*R3*RL;
+    const b2 = 2*C1*C2*E_Ro*R1A*RL + 2*C1*C2*E_Ro*R3*RL;
 
     const a0 = 2*E*RL - E_Ac*RL + 2*E_Ro + 2*RL;
-    const a1 = -2*C1*E_Ac*R1A*RL - 2*C1*E_Ac*R2*RL + 2*C1*E_Ro*R1A + 2*C1*E_Ro*R2 + 2*C1*E_Ro*RL + 2*C1*R1A*RL + 2*C1*R2*RL + 2*C2*E*R1A*RL + 2*C2*E*R1B*RL + 2*C2*E*R2*RL + 2*C2*E*R3*RL - C2*E_Ac*R1A*RL - C2*E_Ac*R1B*RL - C2*E_Ac*R2*RL - C2*E_Ac*R3*RL + 2*C2*E_Ro*R1A + 2*C2*E_Ro*R1B + 2*C2*E_Ro*R2 + 2*C2*E_Ro*R3 + 2*C2*R1A*RL + 2*C2*R1B*RL + 2*C2*R2*RL + 2*C2*R3*RL;
-    const a2 = 2*C1*C2*E*R1A*R1B*RL + 2*C1*C2*E*R1A*R3*RL + 2*C1*C2*E*R1B*R2*RL + 2*C1*C2*E*R2*R3*RL - C1*C2*E_Ac*R1A*R1B*RL - C1*C2*E_Ac*R1A*R3*RL - C1*C2*E_Ac*R1B*R2*RL - C1*C2*E_Ac*R2*R3*RL + 2*C1*C2*E_Ro*R1A*R1B + 2*C1*C2*E_Ro*R1A*R3 + 2*C1*C2*E_Ro*R1A*RL + 2*C1*C2*E_Ro*R1B*R2 + 2*C1*C2*E_Ro*R1B*RL + 2*C1*C2*E_Ro*R2*R3 + 2*C1*C2*E_Ro*R2*RL + 2*C1*C2*E_Ro*R3*RL + 2*C1*C2*R1A*R1B*RL + 2*C1*C2*R1A*R3*RL + 2*C1*C2*R1B*R2*RL + 2*C1*C2*R2*R3*RL;
+    const a1 = -2*C1*E_Ac*R1A*RL - 2*C1*E_Ac*R2*RL + 2*C1*E_Ro*R1A + 2*C1*E_Ro*R2 + 2*C1*E_Ro*RL + 2*C1*R1A*RL + 2*C1*R2*RL + 4*C2*E*R1A*RL + 2*C2*E*R2*RL + 2*C2*E*R3*RL - 2*C2*E_Ac*R1A*RL - C2*E_Ac*R2*RL - C2*E_Ac*R3*RL + 4*C2*E_Ro*R1A + 2*C2*E_Ro*R2 + 2*C2*E_Ro*R3 + 4*C2*R1A*RL + 2*C2*R2*RL + 2*C2*R3*RL;
+    const a2 = 2*C1*C2*E*R1A**2*RL + 2*C1*C2*E*R1A*R2*RL + 2*C1*C2*E*R1A*R3*RL + 2*C1*C2*E*R2*R3*RL - C1*C2*E_Ac*R1A**2*RL - C1*C2*E_Ac*R1A*R2*RL - C1*C2*E_Ac*R1A*R3*RL - C1*C2*E_Ac*R2*R3*RL + 2*C1*C2*E_Ro*R1A**2 + 2*C1*C2*E_Ro*R1A*R2 + 2*C1*C2*E_Ro*R1A*R3 + 4*C1*C2*E_Ro*R1A*RL + 2*C1*C2*E_Ro*R2*R3 + 2*C1*C2*E_Ro*R2*RL + 2*C1*C2*E_Ro*R3*RL + 2*C1*C2*R1A**2*RL + 2*C1*C2*R1A*R2*RL + 2*C1*C2*R1A*R3*RL + 2*C1*C2*R2*R3*RL;
 
     return [
       [b0, b1, b2],
